@@ -14,11 +14,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectBook } from "../redux/books";
 
 const BookTable = () => {
+  const selectedBookTable = document.getElementById("selectedBookTable");
   const books = useSelector((state) => state.books.books);
   const dispatch = useDispatch();
 
   const selectedBookID = (row) => (event) => {
     dispatch(selectBook(row.key));
+    selectedBookTable.scrollIntoView();
   };
 
   return (

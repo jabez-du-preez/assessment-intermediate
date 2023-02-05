@@ -21,6 +21,7 @@ const SelectedBookTable = () => {
           mt: 3,
         }}
         component={Paper}
+        id="selectedBookTable"
       >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
