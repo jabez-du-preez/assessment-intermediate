@@ -1,3 +1,6 @@
+//this component displays the book selected by the user
+//and only gets displays when a book is selected
+
 import React from "react";
 
 import {

@@ -1,9 +1,12 @@
+// This file contains the functions that fetch the books from the Open Library API
+
 import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://openlibrary.org",
 });
 
+//this function fetches all the books from the API, based on the amount of results provided by the user
 export const fetchAll = async (query, limit) => {
   try {
     const { data } = await api.get("/search.json", {
@@ -18,6 +21,7 @@ export const fetchAll = async (query, limit) => {
   }
 };
 
+//this function fetches books by title from the API, based on the amount of results provided by the user
 export const fetchByTitle = async (title, limit) => {
   try {
     const { data } = await api.get("/search.json", {
@@ -32,6 +36,7 @@ export const fetchByTitle = async (title, limit) => {
   }
 };
 
+//this function fetches books by author from the API, based on the amount of results provided by the user
 export const fetchByAuthor = async (author, limit) => {
   try {
     const { data } = await api.get("/search.json", {

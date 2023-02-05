@@ -1,3 +1,6 @@
+//this component contains the search input and the book table
+//the book table is imported from the BookTable component
+
 import React from "react";
 
 import {
@@ -18,32 +21,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearchInput, setNumberOfBooks } from "../redux/books";
 
 const SearchInput = (props) => {
+  //all the state variables are selected from the redux store
   const books = useSelector((state) => state.books.books);
   const loading = useSelector((state) => state.books.loading);
   const selectedBook = useSelector((state) => state.books.selectedBook);
 
   const dispatch = useDispatch();
 
+  //this state variable is used to set the anchor element for the popover
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  //this function sets the anchor element for the popover
   const handlePopoverOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  //this function closes the popover
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
 
   const open = Boolean(anchorEl);
 
+  //this function sets the search input state
   const searchBook = (event) => {
     dispatch(setSearchInput(event.target.value));
   };
 
+  //this function sets the number of books to be displayed
   const numberOfBooks = (event) => {
     dispatch(setNumberOfBooks(event.target.value));
   };
 
+  //this function checks if the selectedBook state is empty
   const checkSelectedBook = (obj) => {
     return Object.keys(obj).length === 0;
   };

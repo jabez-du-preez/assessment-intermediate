@@ -1,3 +1,7 @@
+//this component is very similar to the SelectedBookTable component, except that it doesn't display the number of pages or publisher
+//it also has a different onClick function that dispatches the selectBook action and scrolls to the selectedBookTable element
+//this component is used to display the books in a table returned from the api
+
 import React from "react";
 
 import {
@@ -11,13 +15,17 @@ import {
 } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
+//import selectBook action to change the selectedBook state
 import { selectBook } from "../redux/books";
 
 const BookTable = () => {
+  //select the selectedBookTable element to scroll to it when a book is selected
   const selectedBookTable = document.getElementById("selectedBookTable");
+  //select the books state from the redux store
   const books = useSelector((state) => state.books.books);
   const dispatch = useDispatch();
 
+  //create a function that dispatches the selectBook action and scrolls to the selectedBookTable element
   const selectedBookID = (row) => (event) => {
     dispatch(selectBook(row.key));
     selectedBookTable.scrollIntoView();
